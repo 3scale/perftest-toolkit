@@ -9,6 +9,8 @@ module AMP
           opts[:services] = service_id_list.join(',')
         end
 
+        puts "================== provisioning done, reading services"
+
         Buddhi::Factory.call opts
       end
     end

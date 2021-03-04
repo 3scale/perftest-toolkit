@@ -16,10 +16,10 @@ module AMP
         # # 50 Methods per backend
         # # 50 MappingRules per backend
         class Standard
-          SERVICES_N = 100
-          APP_PER_PLAN_N = 100
+          SERVICES_N = 30
+          APP_PER_PLAN_N = 30
           BACKEND_PER_SVC_N = 10
-          METHODS_PER_BACKEND_N = 50
+          METHODS_PER_BACKEND_N = 10
           LIMITS_PER_PRODUCT = 10
           THREADS_N = Integer(ENV.fetch("THREADS_N", "10"))
 
@@ -38,6 +38,7 @@ module AMP
                 n.times do
                   standard = Standard.new(i, portal, priv_url, pub_url, acc)
                   standard.run
+                  puts "Service #{standard.service_id}"
                   s_list << standard.service_id
                 rescue => e
                   STDERR.puts e
